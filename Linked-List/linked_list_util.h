@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_UTIL_H
+#define LINKED_LIST_UTIL_H
+
 #include "linked_list.h"
 
 //***********************************
@@ -59,3 +62,5 @@ Node* DoubleListNode::getNext() {
 Node* DoubleListNode::getPrev() {
     return this->_prev;
 }
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #include <vector>
 #include "linked_list_util.h"
 
@@ -23,6 +26,7 @@ Node* findNode(int data, Node *cur) {
         }
         cur = cur->getNext();
     }
+    
     return cur;
 }
 
@@ -143,6 +147,10 @@ Node* deleteAfterSingleLinkedList(Node *given, Node *head) {
 
     // re-connecting
     auto deleteNode = cur->getNext();
+    if (!deleteNode) {
+        // cannot delete nullptr
+        return head;
+    }
     cur->setNext((cur->getNext())->getNext());
     // free memeory of delete node
     free(deleteNode);
@@ -186,3 +194,5 @@ Node* deleteGivenSingleLinkedList(Node *given, Node *head) {
 void createDoubleLinkedList(std::vector<int> &nums) {
 
 }
+
+#endif

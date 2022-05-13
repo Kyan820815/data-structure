@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
 #include <iostream>
 
 class Node {
@@ -10,12 +13,15 @@ public:
     virtual Node *getNext() = 0;
     virtual void setPrev(Node *prev) {};
     virtual Node *getPrev() {return NULL;};
+protected:
+    int _data;
 };
 
 class SingleListNode: public Node {
 public:
-    SingleListNode(int data, Node *next=NULL): _data(data), 
-                                               _next(next) {}
+    SingleListNode(int data, Node *next=NULL): _next(next) {
+        _data = data;
+    }
     ~SingleListNode() {
         delete _next;
     }
@@ -25,15 +31,16 @@ public:
     void setNext(Node *next) override;
     Node *getNext() override;
 private:
-    int _data;
-    Node *_next;
+    // int _data;
+    Node * _next;
 };
 
 class DoubleListNode: public Node {
 public:
-    DoubleListNode(int data, Node *next=NULL, Node *prev=NULL): _data(data), 
-                                                                _next(next), 
-                                                                _prev(prev) {}
+    DoubleListNode(int data, Node *next=NULL, Node *prev=NULL): _next(next), 
+                                                                _prev(prev) {
+        _data = data;
+    }
     ~DoubleListNode() {
         delete _next;
         delete _prev;
@@ -46,7 +53,9 @@ public:
     void setPrev(Node *prev) override;
     Node *getPrev() override;
 private:
-    int _data;
-    Node *_next;
-    Node *_prev;
+    // int _data;
+    Node * _next;
+    Node * _prev;
 };
+
+#endif
